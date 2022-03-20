@@ -14,8 +14,6 @@
  - [VSCode](#VSCode)
    - [VSCode 설치](#vscode-설치)
    - [VSCode 설정](#vscode-설정)
-     - [인터프리터 지정](#인터프리터-지정)
-     - [확장프로그램(Extensions)](#확장프로그램(extensions))
 
 # 1. 개발환경 구성
 ## Python
@@ -27,7 +25,8 @@
 ## VSCode
 ### VSCode 설치
  - 다운로드 URL : https://code.visualstudio.com/
-### VSCode 설정 - [참고링크](https://code.visualstudio.com/docs/python/tutorial-django)
+### VSCode 설정
+ - [참고링크](https://code.visualstudio.com/docs/python/tutorial-django)
  - 인터프리터 지정 : <code>VSCode 상단 메뉴바 > View(보기) > Command Palette(Ctrl+Shift+P) > Python: Select Interpreter</code>
  - 확장프로그램(Extensions)
    1. [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
