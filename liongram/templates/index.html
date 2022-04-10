@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <link href="{% static 'reset.css' %}" rel="stylesheet">
+    <link href="{% static 'index.css' %}" rel="stylesheet">
+    <title>Index</title>
+</head>
+<body class="container">
+<main>
+    <div class="card-list">
+        {% include 'mixin/posts/post_detail.html' %}
+    </div>
+</main>
+<div>
+    <nav>
+        <ul class="bottom-menu-group">
+            <li>
+                <a href="#">
+                    <img src="{% static 'icons/home_outlined_black_36dp.svg' %}" alt="홈"/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'icons/search_outlined_black_36dp.svg' %}" alt="검색"/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'icons/add_box_outlined_black_36dp.svg' %}" alt="글쓰기"/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'icons/favorite_outlined_black_36dp.svg' %}" alt="좋아요"/>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="{% static 'icons/account_circle_outlined_black_36dp.svg' %}" alt="프로필"/>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %} | 라이언그램</title>
+    {% block css %}{% endblock %}
+</head>
+<body>
+<div>
+    {% block content %}
+    {% endblock %}
+</div>
+
+{% block script %}{% endblock %}
+</body>
+</html>

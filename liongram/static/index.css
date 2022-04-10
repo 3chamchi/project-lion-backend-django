@@ -1,0 +1,113 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 425px;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0 auto 60px auto;
+}
+
+main {
+    display: flex;
+    background-color: #FAFAFA;
+}
+
+/* Font */
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+/* Bottom Menu */
+.bottom-menu-group {
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #FFFFFF;
+}
+
+/* Card */
+.card-list {
+    margin: 10px 0;
+    background-color: #FFFFFF;
+}
+
+.card__header {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    padding: 0 5px;
+}
+
+.card__user {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.card__user-image {
+    margin: 0 5px;
+}
+
+.card__user-name {
+    font-weight: bold;
+    margin: 0 5px 0 0;
+}
+
+.card__body {
+    margin: 10px 0;
+}
+
+.card__image {
+    height: 450px;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.card__btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    padding: 0 5px;
+}
+
+.card__btn {
+    margin: 0 5px;
+}
+
+.card_content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+}
+
+.card__like-num {
+    font-weight: bold;
+}
+
+.card__main-text {
+    margin: 10px 0;
+}
+
+.card__comment-group > li {
+    margin: 10px 0;
+}
+
+.card__created-at {
+    font-weight: lighter;
+    font-size: 0.8rem;
+}

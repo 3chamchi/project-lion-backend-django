@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>인덱스</title>
+</head>
+<body>
+<a href="/">새로고침</a>
+<hr>
+<form action="" method="GET">
+    <p>GET Form</p>
+    <input type="text" name="param" value="ProjectLion">
+    <input type="submit" value="GET 제출">
+</form>
+
+<form action="" method="POST">{% csrf_token %}
+    <p>POST Form</p>
+    <input type="text" name="param" value="ProjectLion">
+    <input type="submit" value="POST 제출">
+</form>
+</body>
+</html>
