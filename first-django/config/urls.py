@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from demos.views import calculator
+from demos.views import calculator, lotto, lotto_index, lotto_result
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('calculator/', calculator, name='calculator'),
+    # path('lotto/', lotto, name='lotto'),
+    path('lotto/', lotto_index, name='lotto_index'),
+    path('lotto/result/', lotto_result, name='lotto_result'),
 ]
