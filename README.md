@@ -17,10 +17,20 @@
 
 [2. 터미널 명령어](#3.-터미널-명령어)
  - [디렉토리 관련](#디렉토리-관련)
- - 
 
 [3. 장고](#3.-장고)
    - [장고 설치](#장고-설치)
+
+[4. 장고 모델 Models](#4.-장고-모델-models)
+   - [DB 관련 명령어](#db-관련-명령어)
+   - [모델 필드](#모델-필드)
+   - [QuerySet API](#queryset-api)
+
+[5. 장고 어드민 Admin](#5.-장고-어드민-admin)
+   -  [ModelAdmin](#ModelAdmin)
+
+[6. 장고 템플릿 Tempaltes](#6.-장고-템플릿-Tempaltes)
+
 # 1. 개발환경 구성
 ## Python
 ### Python 설치
@@ -164,7 +174,7 @@ python manage.py runserver
 python3 manage.py runserver
 ```
 
-# 4. 장고 모델(Models)
+# 4. 장고 모델 Models
 * 장고 ORM의 하나의 요소로 데이터베이스를 관리하기 위한 목적
 * Models 공식문서 : https://docs.djangoproject.com/en/4.0/topics/db/models/
 
@@ -237,4 +247,19 @@ python3 manage.py migrate
 |aggregate()|집계 값(평균, 합계 등)의 사전을 반환합니다.||
 |update()|지정된 필드에 대해 SQL 업데이트 쿼리를 수행하고 일치하는 행 수를 반환합니다.||
 |delete()|모든 행에 대해 SQL 삭제 쿼리를 수행하고 삭제 QuerySet된 개체 수와 개체 유형당 삭제 수가 포함된 사전을 반환합니다.||
-* QuerySet API 공식문서 : https://docs.djangoproject.com/en/4.0/ref/models/querysets/
+* QuerySet API 공식문서 : https://docs.djangoproject.com/en/4.0/ref/models/querysets/  
+  
+  
+# 5. 장고 어드민 Admin
+## ModelAdmin
+* 공식문서 : https://docs.djangoproject.com/en/4.0/ref/contrib/admin/#modeladmin-options
+### ModelAdmin 주요 옵션
+|         옵션명         | 내용                                                       |비고|
+|:-------------------:|:---------------------------------------------------------|:---------------------------------:|
+|list_display|관리자의 변경 목록 페이지에 표시되는 필드를 제어하도록 설정||
+|list_editable|변경 목록 페이지에서 편집을 허용할 모델의 필드 이름 목록으로 설정||
+|list_filter|변경 목록 페이지 오른쪽 사이드바에서 필터를 활성화하도록 설정||
+|search_fields|변경 목록 페이지에서 검색 상자를 활성화하도록 설정||
+|search_help_text|검색 상자 아래에 표시될 검색 상자에 대한 설명 텍스트를 지정하도록 설정|Django 4.0의 새로운 기능|
+|readonly_fields|데이터를 있는 그대로 표시하고 편집 불가||
+|inlines|관리 인터페이스에는 상위 모델과 동일한 페이지에서 모델을 편집할 수 있는 기능|InlineModelAdmin|
