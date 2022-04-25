@@ -1,12 +1,19 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import ListView
 
+from .forms import PostBaseForm
 from .models import Post
 
 
 def index(request):
-    return render(request, 'index.html')
+    # post_list = Post.objects.all().select_related('writer').prefetch_related('comment_set').order_by('-created_at')
+    post_list = Post.objects.all().order_by('-created_at')
+    context = {
+        'post_list': post_list
+    }
+    return render(request, 'index.html', context)
 
 
 def post_list_view(request):
@@ -14,15 +21,68 @@ def post_list_view(request):
 
 
 def post_detail_view(request, id):
-    return render(request, 'posts/post_detail.html')
+    post = Post.objects.get(id=id)
+    context = {
+        'post': post
+    }
+    return render(request, 'posts/post_detail.html', context)
 
 
+@login_required
 def post_create_view(request):
-    return render(request, 'posts/post_form.html')
+    if request.method == 'GET':
+        return render(request, 'posts/post_form.html')
+    else:
+        image = request.FILES.get('image')
+        content = request.POST.get('content')
+
+        Post.objects.create(
+            image=image,
+            content=content,
+            writer=request.user,
+        )
+
+        return redirect('index')
+
+
+@login_required
+def post_create_view(request):
+    if request.method == 'GET':
+        return render(request, 'posts/post_form.html', {'form': PostBaseForm()})
+    else:
+        form = PostBaseForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            Post.objects.create(
+                image=form.cleaned_data.get('image'),
+                content=form.cleaned_data.get('content'),
+                writer=request.user,
+            )
+        else:
+            return redirect('posts:post-create')
+
+        return redirect('index')
 
 
 def post_update_view(request, id):
-    return render(request, 'posts/post_form.html')
+    post = Post.objects.get(id=id)
+
+    if request.method == 'GET':
+        context = {
+            'post': post
+        }
+        return render(request, 'posts/post_form.html', context)
+    else:
+        new_image = request.FILES.get('image')
+        content = request.POST.get('content')
+
+        if new_image:
+            post.image.delete()
+            post.image = new_image
+
+        post.content = content
+        post.save()
+        return redirect('posts:post-detail', post.id)
 
 
 def post_delete_view(request, id):

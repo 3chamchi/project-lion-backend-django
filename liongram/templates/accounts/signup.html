@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}회원가입{% endblock %}
+
+{% block content %}
+<h1>회원가입</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        {{ form.as_ul }}
+    <div>
+        <input type="submit">
+    </div>
+</form>
+{% endblock %}

@@ -1,6 +1,32 @@
 {% extends 'base.html' %}
-{% block title %}게시글 폼{% endblock %}
+{% block title %}글 입력{% endblock %}
 
 {% block content %}
-    <h1>게시글 폼</h1>
+    <h1>Post 입력 화면</h1>
+    {#<form action="" method="POST" enctype="multipart/form-data">#}
+    {#    {% csrf_token %}#}
+    {#    <div>#}
+    {#        <label for="id_image">이미지</label>#}
+    {#        {% if post.image %}#}
+    {#            <p>현재 : <a href="{{ post.image.url }}">{{ post.image.name }}</a></p>#}
+    {#            <p>변경 : <input type="file" name="image" accept="image/*" id="id_image"></p>#}
+    {#        {% else %}#}
+    {#            <input type="file" name="image" accept="image/*" ida="id_image">#}
+    {#        {% endif %}#}
+    {#    </div>#}
+    {#    <div>#}
+    {#        <label for="id_content">내용</label>#}
+    {#        <textarea name="content" id="id_content" cols="30" rows="10">{% if post %}{{ post.content }}{% endif %}#}
+    {#        </textarea>#}
+    {#    </div>#}
+    {#    <div>#}
+    {#        <input type="submit">#}
+    {#    </div>#}
+    {#</form>#}
+    <hr>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+    </form>
 {% endblock %}

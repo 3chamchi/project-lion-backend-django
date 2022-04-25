@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}게시글 상세{% endblock %}
+{% block title %}글 상세{% endblock %}
 
 {% block content %}
-    <h1>게시글 상세</h1>
+<h1>Post 상세 화면</h1>
+{% include 'mixin/posts/post_card.html' with detail=True %}
 {% endblock %}

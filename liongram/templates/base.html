@@ -1,17 +1,44 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <title>{% block title %}{% endblock %} | 라이언그램</title>
-    {% block css %}{% endblock %}
 </head>
-<body>
-<div>
-    {% block content %}
-    {% endblock %}
-</div>
-
-{% block script %}{% endblock %}
+<body class="container">
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div>
+        <nav>
+            <ul class="bottom-menu-group">
+                <li>
+                    <img src="{% static 'icons/home_outlined_black_36dp.svg' %}" alt="홈">
+                </li>
+                <li>
+                    <img src="{% static 'icons/search_outlined_black_36dp.svg' %}" alt="검색"/>
+                </li>
+                <li>
+                    <a href="{% url 'posts:post-create' %}">
+                        <img src="{% static 'icons/add_box_outlined_black_36dp.svg' %}" alt="글쓰기"/>
+                    </a>
+                </li>
+                <li>
+                    <img src="{% static 'icons/favorite_outlined_black_36dp.svg' %}" alt="좋아요"/>
+                </li>
+                <li>
+                    <img src="{% static 'icons/account_circle_outlined_black_36dp.svg' %}" alt="프로필"/>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    {% if request.user.is_authenticated %}
+        <div>
+            {{ user.username }}님 환영합니다.
+        </div>
+    {% endif %}
 </body>
 </html>

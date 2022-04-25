@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}게시글 삭제{% endblock %}
+{% block title %}글 삭제{% endblock %}
 
 {% block content %}
-    <h1>게시글 삭제</h1>
+<h1>Post 삭제 화면</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    <p>한번 삭제된 데이터는 복구가 불가능합니다.</p><br/>
+    <p>그래도 삭제하시겠습니까? ID : {{ post.id }}</p><br/><br/>
+
+    <a href="{% url 'index' %}">돌아가기</a>
+    <input type="submit" value="삭제하기">
+</form>
+<hr>
+{% include 'mixin/posts/post_card.html' with detail=True %}
 {% endblock %}

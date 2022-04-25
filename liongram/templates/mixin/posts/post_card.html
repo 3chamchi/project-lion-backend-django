@@ -1,0 +1,56 @@
+{% load static %}
+<div class="card">
+    <div class="card__header">
+        <img class="card__user-image" src="http://via.placeholder.com/32x32"/>
+        <span class="card__user-name">{{ post.writer }}</span>
+        {% if request.user == post.writer %}
+            <a href="{% url 'posts:post-update' post.id %}">수정하기</a>
+        {% endif %}
+    </div>
+    <div class="card__body">
+        <div>
+            {#            <img class="card__image" src="http://via.placeholder.com/600x600">#}
+            <img class="card__image" src="{{ post.image.url }}">
+        </div>
+        <div class="card__btn-group">
+            <div>
+                <img class="card__btn" src="{% static 'icons/favorite_outlined_black_36dp.svg' %}" alt="좋아요"/>
+                <img class="card__btn" src="{% static 'icons/mode_comment_outlined_black_36dp.svg' %}" alt="댓글"/>
+                <img class="card__btn" src="{% static 'icons/send_outlined_black_36dp.svg' %}" alt="공유하기"/>
+            </div>
+            <div>
+                <img class="card__btn" src="{% static 'icons/bookmark_outlined_black_36dp.svg' %}" alt="북마크"/>
+            </div>
+        </div>
+        <div class="card_content">
+            <span class="card__like-num">좋아요 00개</span>
+            <div class="card__main-text">
+                <p><span class="card__user-name">{{ post.writer }}</span>{{ post.content |truncatechars:35 }}</p>
+                {% if not detail %}
+                    <a href="{% url 'posts:post-detail' post.id %}">더보기</a>
+                {% endif %}
+            </div>
+            <div>
+                <p class="">댓글 {{ post.comment_set.all.count }}개 {% if not detail %}모두 보기{% endif %}</p>
+                <ul class="card__comment-group">
+                    {% if not detail %}
+                        {% for comment in post.comment_set.all %}
+                            <li><p><span class="card__user-name">{{ comment.writer }}</span>{{ comment.content }}</p>
+                            </li>
+                        {% empty %}
+                            <li><p>댓글 없음</p></li>
+                        {% endfor %}
+                    {% else %}
+                        {% for comment in post.comment_set.all|slice:":2" %}
+                            <li><p><span class="card__user-name">{{ comment.writer }}</span>{{ comment.content }}</p>
+                            </li>
+                        {% empty %}
+                            <li><p>댓글 없음</p></li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+            <span class="card__created-at">{{ post.created_at|date:"Y년 m월 d일" }}</span>
+        </div>
+    </div>
+</div>

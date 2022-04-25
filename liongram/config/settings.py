@@ -24,6 +24,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
+    'support',
+    'users',
+    'accounts',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -34,6 +38,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -103,11 +108,16 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# INTERNAL_IPS = [
-#     "127.0.0.1",
-# ]
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
+AUTH_USER_MODEL = 'users.User'

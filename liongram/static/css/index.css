@@ -10,7 +10,6 @@ body {
 }
 
 main {
-    display: flex;
     background-color: #FAFAFA;
 }
 
@@ -76,6 +75,7 @@ main {
     height: 450px;
     width: 100%;
     margin: 5px 0;
+    object-fit: cover;
 }
 
 .card__btn-group {
